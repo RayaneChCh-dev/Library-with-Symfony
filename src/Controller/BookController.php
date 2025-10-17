@@ -52,10 +52,6 @@ final class BookController extends AbstractController
                 'errors' => $errorMessages,
             ], 422);
         }
-
-        // EXTRACTION DES DONNÉES
-
-        // RETOUR DE LA RÉPONSE
         if ($data['start_date'] >= $data['end_date']) {
             return $this->json([
                 'message' => 'Validation failed',
@@ -65,6 +61,9 @@ final class BookController extends AbstractController
             ], 422);
         }
 
+        // EXTRACTION DES DONNÉES
+
+        // RETOUR DE LA RÉPONSE
         return $this->json([
             'query' => [
                 'author_id' => $data['author_id'],

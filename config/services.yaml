@@ -18,3 +18,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\EventSubscriber\RequestLoggerSubscriber:
+        arguments:
+            $requestLogger: '@monolog.logger.request'
+            $tokenStorage: '@?security.token_storage'
+        tags:
+            - { name: 'kernel.event_subscriber' }
